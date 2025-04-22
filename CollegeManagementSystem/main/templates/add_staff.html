@@ -1,0 +1,97 @@
+{% extends 'admin_home.html' %}
+
+{% block titel %}
+Add Department
+{% endblock %}
+
+{% block content %}
+
+
+<div class="card">
+    <div class="card-body">
+
+        <h4 class="card-title">Staff Registration</h4>
+        <hr>
+
+        <form class="form-horizonal" action="/add_staff/" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="row my-3">
+                <div class="col">
+                    <label for="" class="col-sm-3 text-start control-label col-form-label">First Name</label>
+                    <input type="text" class="form-control" id="" placeholder="Enter First Name" name="first_name"
+                        required>
+
+                </div>
+
+                <div class="col">
+                    <label for="" class="col-sm-3 text-start control-label col-form-label">Last Name</label>
+                    <input type="text" class="form-control" placeholder="Enter Last Name" name="last_name">
+                </div>
+            </div>
+            <div class="row my-3">
+                <div class="col">
+                    <label for="" class="col-sm-3 text-start control-label col-form-label">Username</label>
+                    <input type="text" name="username" id="" class="form-control">
+                </div>
+                <div class="col">
+                    <label for="" class="col-sm-3 text-start control-label col-form-label">Password </label>
+                    <input type="password" class="form-control" name="password">
+                </div>
+            </div>
+
+            <div class="row my-3">
+                <div class="col">
+                    <label for="" class="col-sm-3 text-start control-label col-form-label">Email</label>
+                    <input type="email" name="email" id="" class="form-control">
+                </div>
+                <div class="col">
+                    <label for="" class="col-sm-3 text-start control-label col-form-label">Mobile </label>
+                    <input type="number" class="form-control" name="mob">
+                </div>
+            </div>
+
+            <div class="row my-3">
+                <div class="col">
+                    <label for="" class="col-sm-3 text-start control-label col-form-label">Select Role</label>
+                    <select name="role_id" id="" class="form-control">
+                        <option value="" selected>Choose Role...</option>
+                        {% for r in staff_role %}
+                        <option value="{{r.id}}">{{r.role}}</option>
+
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="col">
+                    <label for="" class="col-sm-3 text-start control-label col-form-label">Qualification</label>
+                    <input type="text" name="qualification" id="" class="form-control">
+                </div>
+
+            </div>
+
+            <div class="row my-3">
+                <div class="col">
+                    <label for="" class="col-sm-3 text-start control-label col-form-label">Select Department</label>
+                    <select name="dep_id" id="" class="form-control">
+                        <option value="" selected>Choose Department</option>
+                        {% for i in department_data %}
+                        <option value="{{i.id}}">{{i.dep_name}}</option>
+
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="col">
+                    <label for="" class="col-sm-3 text-start control-label col-form-label">Upload Photo</label>
+                    <input type="file" name="photo" id="" class="form-control">
+                </div>
+
+            </div>
+
+
+
+
+            <input type="submit" class="btn btn-primary my-4" value="Register"></button>
+        </form>
+    </div>
+</div>
+
+{% endblock %}

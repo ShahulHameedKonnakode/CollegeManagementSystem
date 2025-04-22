@@ -1,0 +1,22 @@
+{% extends 'admin_home.html' %}
+
+{% block titel %}
+Add Staff Role
+{% endblock %}
+
+{% block content %}
+
+
+<div class="card">
+    <div class="card-body">
+        <h4 class="card-title">Add Staff Role</h4>
+
+        <form action="add_staff_role" method="POST">
+            {% csrf_token %}
+            <label for="" class="form-label">Add Staff Role</label>
+            <input type="text" class="form-control" placeholder="Enter Role" name="role">
+            <button type="submit" class="btn btn-primary my-3">Create Role</button>
+        </form>
+    </div>
+</div>
+{% endblock%}

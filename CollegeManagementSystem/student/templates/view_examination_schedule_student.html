@@ -1,0 +1,118 @@
+{% extends 'student_home.html' %}
+
+{% block titel %}
+Examination Schedule
+{% endblock %}
+
+{% block content %}
+
+<link rel="stylesheet" type="text/css" href="../static/backend/assets/extra-libs/multicheck/multicheck.css" />
+<link href="../static/backend/assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.css" rel="stylesheet" />
+
+{% if messages %}
+{% for message in messages %}
+<script>
+    alert("{{ message }}");
+</script>
+{% endfor %}
+{% endif %}
+
+<div class="card">
+    <div class="card-body">
+        <h5 class="card-title">Examination Schedule</h5>
+        <hr>
+        <form action="view_examination_schedule" method="POST">
+            {% csrf_token %}
+            <div class="card mb-3">
+                <div class="card-body">
+                    <div class="row row-cols-4">
+                        <div class="col-sm-4">
+                            <select name="exam_group_id" class="form-control">
+                                <option value="">Select Examination Group</option>
+                                {% for i in exam_group_data %}
+                                <option value="{{i.id}}">
+                                    
+                                    {{i.exam_group_name}}
+                                </option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="col-sm-6">
+                            <select name="exam_id" class="form-control">
+                                <option value="">Select Examination</option>
+                                {% for i in exam_data %}
+                                <option value="{{i.id}}">
+                                    {{i.name}}
+                                </option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="col-sm-2">
+                            <input type="submit" class="btn btn-primary w-100" value="Search">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+        <div class="table-responsive">
+            <table id="zero_config" class="table table-striped table-bordered">
+                <div>
+                    <div class="row row-cols-2">
+                        <div class="col-sm-6">
+                <h6>Exam Group: {{ selected_exam_group.exam_group_name }}</h6>
+            </div>
+            <div class="col-sm-6">
+                <h6>Exam: {{ selected_exam.name }}</h6>
+            </div>
+            </div>
+        </div>
+                <thead class="table-primary fw-bold">
+                    <tr>
+                        <th>SL.No.</th>
+                        <th>Subject</th>
+                        <th>Date</th>
+                        <th>Time</th>
+                        <th>Room</th>
+                        <th>Min Mark</th>
+                        <th>Max Mark</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    {% if examination_schedule %}
+                        {% for i in examination_schedule %}
+                        <tr>
+                            <td>{{forloop.counter}}</td>
+                            <td>{{i.exam_subject.subject_name}}</td>
+                            <td>{{i.exam_date}}</td>
+                            <td>{{i.exam_time}}</td>
+                            <td>{{i.room_no}}</td>
+                            <td>{{i.min_mark}}</td>
+                            <td>{{i.max_mark}}</td>
+                            
+                
+                            
+                        </tr>
+                        {% endfor %}
+                    {% else %}
+                        <tr>
+                            <td colspan="7" class="text-center">No schedules found for the selected criteria</td>
+                        </tr>
+                    {% endif %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<!-- Your existing scripts -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../static/backend/assets/extra-libs/multicheck/datatable-checkbox-init.js"></script>
+<script src="../static/backend/assets/extra-libs/multicheck/jquery.multicheck.js"></script>
+<script src="../static/backend/assets/extra-libs/DataTables/datatables.min.js"></script>
+<script>
+    $("#zero_config").DataTable();
+</script>
+{% endblock %}

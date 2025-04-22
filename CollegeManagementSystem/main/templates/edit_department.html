@@ -1,0 +1,23 @@
+{% extends 'admin_home.html' %}
+
+{% block titel %}
+Edit Department
+{% endblock %}
+
+{% block content %}
+
+
+    <div class="card col">
+        <div class="card-body">
+            <h4 class="card-title">Edit Department</h4>
+            <form class="form-horizonal" action="/update_department/{{edit_dep_data.id}}" method="POST">
+                {% csrf_token %}
+                <label for="" class="form-label">Department</label>
+                <input type="text" class="form-control" placeholder="Enter Department Name" value="{{edit_dep_data.dep_name}}" name="dep_name">
+                
+                <input type="submit" class="btn btn-primary my-3" value="UPDATE">
+            </form>
+        </div>
+    </div>
+
+{% endblock%}

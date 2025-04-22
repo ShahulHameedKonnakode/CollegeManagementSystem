@@ -1,0 +1,25 @@
+{% extends 'admin_home.html' %}
+
+{% block titel %}
+Book Category
+{% endblock %}
+
+{% block content %}
+
+
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Add Category</h4>
+            <form class="form-horizonal" action="add_library_catogery" method="POST">
+                {% csrf_token %}
+                <div class="col-sm-12">
+                    <label for="" class="col-sm-3 text-start control-label col-form-label">Category</label>
+                </div>
+                <div class="col-sm-12">
+                    <input type="text" class="form-control" placeholder="Enter Category Name" name="category_name">
+                    <button type="submit" class="btn btn-primary my-3">Add Category</button>
+            </form>
+        </div>
+    </div>
+
+{% endblock%}

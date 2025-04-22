@@ -1,0 +1,51 @@
+{% extends 'admin_home.html' %}
+
+{% block titel %}
+Add Department
+{% endblock %}
+
+{% block content %}
+
+<div class="container my-4">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Add Department</h4>
+            <form class="form-horizonal" action="add_course" method="POST">
+                {% csrf_token %}
+                <div class="col-sm-12 mt-2">
+                    <label for="" class="col-sm-3 text-start control-label col-form-label">Course Code</label>
+                </div>
+                <div class="col-sm-12">
+                    <input type="text" class="form-control" placeholder="Enter Course Code" name="course_code">
+                    <div class="col-sm-12 mt-2">
+                        <label for="" class="form-label">Course Name</label>
+                    </div>
+                    <div class="col-sm-12">
+                        <input type="text" class="form-control" placeholder="Enter Course Name" name="course_name">
+                    </div>
+                    <div class="col-sm-12 mt-2">
+                        <label for="" class="form-label">Select Department</label>
+                    </div>
+                    <div class="col-sm-12">
+                        <select name="dep_id" id="" class="form-control">
+                            <option selected>Select Department</option>
+                            {% for i in departement_data %}
+                            <option value="{{i.id}}">{{i.dep_name}}</option>
+
+                            {% endfor %}
+                        </select>
+                        <button type="submit" class="btn btn-primary my-3">Add Course</button>
+                    </div>
+            </form>
+
+
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+
+
+
+

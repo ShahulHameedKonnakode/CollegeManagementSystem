@@ -1,0 +1,52 @@
+{% extends 'admin_home.html' %}
+
+
+{% block titel %}
+Add Course
+{% endblock %}
+
+{% block content %}
+{% if messages %}
+{% for message in messages %}
+<script>
+    alert("{{ message }}");
+</script>
+{% endfor %}
+{% endif %}
+
+
+
+<div class="card">
+    <div class="card-body">
+        <h4 class="card-title">Add Subject</h4>
+
+        <form class="form-horizonal" action="add_subject" method="POST">
+            {% csrf_token %}
+            <div class="col-sm-12">
+            <label for="" class="col-sm-3 text-start control-label col-form-label">Subject Code</label>
+            </div>
+            <div class="col-sm-12">
+            <input type="text" class="form-control" placeholder="Enter Subject Code" name="subject_code">
+            </div>
+            <div class="col-sm-12">
+            <label for="" class="col-sm-3 text-start control-label col-form-label">Subject Name</label>
+            </div>
+            <div class="col-sm-12">
+            <input type="text" class="form-control" placeholder="Enter Subject Name" name="subject_name">
+            </div>
+            <div class="col-sm-12">
+            <label for="" class="col-sm-3 text-start control-label col-form-label">Select Course</label>
+            </div>
+            <div class="col-sm-12">
+            <select name="course_id" id="" class="form-control">
+                {% for i in course_data %}
+                <option value="{{i.id}}">{{i.course_name}}</option>
+
+                {% endfor %}
+            </select>
+            <button type="submit" class="btn btn-primary my-3">Add Subject</button>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock%}

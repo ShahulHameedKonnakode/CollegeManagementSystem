@@ -1,0 +1,24 @@
+{% extends 'admin_home.html' %}
+
+{% block titel %}
+Add Department
+{% endblock %}
+
+{% block content %}
+
+<div class="card">
+    <div class="card-body">
+        <h4 class="card-title">Create Examination Group</h4>
+
+        <form class="form-horizonal" action="create_examination_group" method="POST">
+            {% csrf_token %}
+            
+            <label for="" class="col-sm-3 text-start control-label col-form-label">Examination Group Name</label>
+            <input type="text" class="form-control" placeholder="Enter Name of Examination" name="name">
+            <label for="" class="col-sm-3 text-start control-label col-form-label"> Description</label>
+            <textarea class="form-control" placeholder="Enter Description of Examination" name="description"></textarea>
+            <button type="submit" class="btn btn-primary my-3"> Create Examination</button>
+        </form>
+    </div>
+</div>
+{% endblock%}

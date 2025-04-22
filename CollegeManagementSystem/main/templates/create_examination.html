@@ -1,0 +1,43 @@
+{% extends 'admin_home.html' %}
+
+{% block titel %}
+Add Department
+{% endblock %}
+
+{% block content %}
+
+<div class="card">
+    <div class="card-body">
+        <h4 class="card-title">Create Examination</h4>
+
+        <form class="form-horizonal" action="create_examination" method="POST">
+            {% csrf_token %}
+            <div class="row row-cols-2">
+            <div class="col-sm-6">
+                <select name="exam_group_id" id="" class="form-control">
+                    <option selected>Select Examination Group</option>
+                    {% for i in exam_group_data %}
+                    <option value="{{i.id}}">{{i.exam_group_name}}</option>
+
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="col-sm-6">
+                <select name="session_name" id="" class="form-control">
+                    <option selected>Select Session</option>
+                    {% for i in exam_session_data %}
+                    <option value="{{i.id}}">{{i.session_name}}</option>
+
+                    {% endfor %}
+                </select>
+            </div>
+        </div>
+            <label for="" class="col-sm-3 text-start control-label col-form-label">Examination Name</label>
+            <input type="text" class="form-control" placeholder="Enter Name of Examination" name="name">
+            <label for="" class="col-sm-3 text-start control-label col-form-label">Examination Description</label>
+            <textarea class="form-control" placeholder="Enter Description of Examination" name="description"></textarea>
+            <button type="submit" class="btn btn-primary my-3"> Create Examination</button>
+        </form>
+    </div>
+</div>
+{% endblock%}

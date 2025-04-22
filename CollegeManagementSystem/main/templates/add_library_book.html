@@ -1,0 +1,34 @@
+{% extends 'admin_home.html' %}
+
+{% block titel %}
+Add Department
+{% endblock %}
+
+{% block content %}
+
+
+<div class="card">
+  <div class="card-body">
+
+    <h4 class="card-title">Book Registration</h4>
+    <hr>
+
+
+      <form action="add_library_book" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div>
+          
+{{books}}
+        </div>
+
+
+
+
+        <input type="submit" class="btn btn-primary my-4" value="SUBMIT">
+      </form>
+    </div>
+
+  </div>
+
+
+  {% endblock %}

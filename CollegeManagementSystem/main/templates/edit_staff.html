@@ -1,0 +1,35 @@
+{% extends 'admin_home.html' %}
+
+{% block titel %}
+Edit Department
+{% endblock %}
+
+{% block content %}
+
+
+    <div class="card col">
+        <div class="card-body">
+            <h4 class="card-title">Edit Staff Details</h4>
+  
+   <form action="/update_teacher/{{data.id}}" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    <label for="" class="form-label">Name</label>
+    <input type="text" class="form-control" value="{{data.staff_id.get_full_name}}" name="name">
+    <label for="" class="form-label">Mob</label>
+    <input type="text" class="form-control" value="{{data.mob}}" name="mob">
+    <label for="" class="form-label">E-mail</label>
+    <input type="text" class="form-control" value="{{data.staff_id.email}}" name="email">
+    <label for="" class="form-label">Department</label>
+    <select class="form-control" name="department">
+      {% for dept in department %}
+      <option value="{{ dept.id }}" {% if dept == data.department %} selected {% endif %}>{{ dept.dep_name }}</option>
+      {% endfor %}
+  </select>
+  
+    <input type="file" class="form-control" value="{{ data.photo.url }}" name="photo">
+    <input type="submit" value="Update" class="btn btn-warning mt-3">
+   </form>
+</div>
+    </div>
+
+{% endblock %}
