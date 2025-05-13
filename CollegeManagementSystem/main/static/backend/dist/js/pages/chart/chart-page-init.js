@@ -129,11 +129,11 @@ $(function () {
       [
         {
           data: sin,
-          label: "sin(x)",
+          label: "student(x)",
         },
         {
           data: cos,
-          label: "cos(x)",
+          label: "teacher(x)",
         },
       ],
       options

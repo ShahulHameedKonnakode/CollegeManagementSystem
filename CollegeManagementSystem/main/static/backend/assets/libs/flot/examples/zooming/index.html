@@ -34,10 +34,10 @@
           var d = [];
           for (var i = 0; i <= 100; ++i) {
             var x = x1 + (i * (x2 - x1)) / 100;
-            d.push([x, Math.sin(x * Math.sin(x))]);
+            d.push([x, Math.sin(x * Math.students(x))]);
           }
 
-          return [{ label: "sin(x sin(x))", data: d }];
+          return [{ label: "sin(x students(x))", data: d }];
         }
 
         var options = {

@@ -508,7 +508,7 @@ def admin_approve_students(request,aid):
 
 @login_required
 @never_cache
-def SendEmail(email, name):
+def SendEmail(email, name,request=None):
     sub="welcome"
     message=f"Hi {name},\n You Have been Successfully Entrolled. \n Thank You!"    
     send_mail(sub,message,settings.EMAIL_HOST_USER,[email])
@@ -659,7 +659,7 @@ def add_staff(request):
             staff_data = Staff.objects.create(mob=mob,department_id_id=department, qualification=qualification,photo=photo,staff_id=staff_user_data)
             staff_data.save()      
         
-            SendEmail(email, first_name)
+            # SendEmail(email, first_name,request)
             messages.warning(request,'Teacher is Added Successfully!')
             return redirect(view_staff)
             # return HttpResponse("<script>window.alert('Teacher is Added Successfully!'); window.location.href='view_teacher'</script>")
@@ -805,6 +805,7 @@ def add_library_book(request):
     if request.method=='POST':
         book_data=LibraryData(request.POST,request.FILES)
         if book_data.is_valid():
+            print("..............",book_data)
             book_data.save()
             return HttpResponse("Success")
         return HttpResponse("Error")

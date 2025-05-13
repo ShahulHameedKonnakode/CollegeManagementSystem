@@ -18,7 +18,7 @@ $(function () {
   var plot = $.plot(
     $(".chart"),
     [
-      { data: sin, label: "sin(x)", color: "#ee7951" },
+      { data: sin, label: "students(x)", color: "#ee7951" },
       { data: cos, label: "cos(x)", color: "#4fb9f0" },
     ],
     {

@@ -86,6 +86,19 @@ DATABASES = {
     }
 }
 
+# DATABASES = {
+    # 'default': {
+    #     'ENGINE': 'djongo',
+    #     'NAME': 'malick',
+    #     'CLIENT': {
+    #         'host': 'mongodb://localhost:27017/',
+        #     'username': 'your_username',  # if authentication is needed
+        #     'password': 'your_password',  # if authentication is needed
+        #     'authSource': 'admin',  # auth database
+        #     'authMechanism': 'SCRAM-SHA-1'
+        # }
+
+
 
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
