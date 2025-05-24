@@ -818,3 +818,22 @@ def add_library_book(request):
 def view_library_book(request):
     books=Book.objects.all()
     return render(request, 'view_library_book.html',{'books':books})
+
+
+
+
+
+def about(request):
+    return render(request, 'about.html')
+
+def courses(request):
+    return render(request, 'courses.html')
+
+def trainers(request):
+    return render(request, 'trainers.html')
+
+def events(request):
+    return render(request, 'events.html')
+
+def pricing(request):
+    return render(request, 'pricing.html')
